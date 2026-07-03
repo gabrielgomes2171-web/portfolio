@@ -1,61 +1,55 @@
-const categorias = [
-  {
-    titulo: "💻 Linguagens",
-    skills: ["Java", "JavaScript", "TypeScript", "SQL"],
-  },
-  {
-    titulo: "📱 Mobile",
-    skills: ["React Native", "Expo", "Android Studio"],
-  },
-  {
-    titulo: "🌐 Back-end",
-    skills: ["Spring Boot", "REST API", "Swagger", "Postman"],
-  },
-  {
-    titulo: "🗄 Banco de Dados",
-    skills: ["MySQL", "Firebase"],
-  },
-  {
-    titulo: "🛠 Ferramentas",
-    skills: ["Git", "GitHub", "VS Code", "Figma"],
-  },
-];
+import { motion } from "framer-motion";
+import { skills } from "../data/skills";
 
 export function Skills() {
   return (
-    <section
-      id="skills"
-      className="max-w-7xl mx-auto py-28 px-6"
-    >
-      <h2 className="text-5xl font-bold text-center mb-16">
-        Tecnologias
-      </h2>
+    <section id="skills" className="py-24 px-6 bg-zinc-950">
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto">
 
-        {categorias.map((categoria) => (
+        <h2 className="text-5xl font-bold text-center mb-16">
+          Tecnologias
+        </h2>
 
-          <div
-            key={categoria.titulo}
-            className="bg-zinc-900 rounded-2xl border border-zinc-800 p-8 hover:border-blue-500 hover:scale-105 transition"
-          >
+        {skills.map((group) => (
 
-            <h3 className="text-2xl font-bold mb-6">
-              {categoria.titulo}
+          <div key={group.category} className="mb-16">
+
+            <h3 className="text-3xl font-semibold mb-8 text-blue-500">
+              {group.category}
             </h3>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-              {categoria.skills.map((skill) => (
+              {group.items.map((skill) => {
 
-                <span
-                  key={skill}
-                  className="bg-zinc-800 px-4 py-2 rounded-full text-sm hover:bg-blue-500 transition"
-                >
-                  {skill}
-                </span>
+                const Icon = skill.icon;
 
-              ))}
+                return (
+
+                  <motion.div
+                    whileHover={{
+                      y: -8,
+                      scale: 1.03
+                    }}
+                    key={skill.name}
+                    className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 text-center shadow-lg"
+                  >
+
+                    <Icon
+                      size={55}
+                      className="mx-auto mb-5 text-blue-500"
+                    />
+
+                    <h4 className="text-xl font-semibold">
+                      {skill.name}
+                    </h4>
+
+                  </motion.div>
+
+                );
+
+              })}
 
             </div>
 
@@ -64,6 +58,7 @@ export function Skills() {
         ))}
 
       </div>
+
     </section>
   );
 }
