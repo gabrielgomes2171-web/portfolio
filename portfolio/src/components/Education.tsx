@@ -1,84 +1,105 @@
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaCertificate } from "react-icons/fa";
+import {
+  FaGraduationCap,
+  FaCertificate,
+} from "react-icons/fa";
+
+const certificates = [
+  {
+    title: "Análise e Desenvolvimento de Sistemas",
+    institution: "UNINASSAU",
+    period: "2025 - Atualmente",
+    icon: <FaGraduationCap />,
+  },
+
+  {
+    title: "Java",
+    institution: "Estudos Acadêmicos",
+    period: "Concluído",
+    icon: <FaCertificate />,
+  },
+
+  {
+    title: "React Native",
+    institution: "Projetos Pessoais",
+    period: "Em desenvolvimento",
+    icon: <FaCertificate />,
+  },
+
+  {
+    title: "Spring Boot",
+    institution: "Projetos Pessoais",
+    period: "Em desenvolvimento",
+    icon: <FaCertificate />,
+  },
+
+  {
+    title: "MySQL",
+    institution: "Faculdade",
+    period: "Concluído",
+    icon: <FaCertificate />,
+  },
+
+  {
+    title: "Git & GitHub",
+    institution: "Projetos Pessoais",
+    period: "Concluído",
+    icon: <FaCertificate />,
+  },
+];
 
 export function Education() {
   return (
     <section
       id="education"
-      className="bg-zinc-900 py-24 px-6"
+      className="py-24 bg-zinc-50 dark:bg-zinc-950 transition-all"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-5xl font-bold text-center mb-16">
-          Formação & Certificações
+          Formação <span className="text-blue-500">& Certificações</span>
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-8">
 
-          {/* Formação */}
-          <motion.div
-            whileHover={{ y: -8 }}
-            className="bg-zinc-950 rounded-3xl border border-zinc-800 p-8"
-          >
-            <FaGraduationCap
-              className="text-blue-500 mb-6"
-              size={50}
-            />
+          {certificates.map((item, index) => (
 
-            <h3 className="text-2xl font-bold">
-              Análise e Desenvolvimento de Sistemas
-            </h3>
+            <motion.div
+              key={index}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+              }}
+              className="
+              rounded-2xl
+              border
+              border-zinc-200
+              dark:border-zinc-800
+              bg-white
+              dark:bg-zinc-900
+              p-8
+              shadow-lg
+              "
+            >
+              <div className="text-4xl text-blue-500 mb-4">
+                {item.icon}
+              </div>
 
-            <p className="text-blue-400 mt-2">
-              UNINASSAU - Caruaru
-            </p>
+              <h3 className="text-2xl font-bold">
+                {item.title}
+              </h3>
 
-            <p className="text-zinc-400 mt-6 leading-8">
-              Atualmente cursando o 4º período, com foco em
-              desenvolvimento Web, Mobile, Banco de Dados,
-              Engenharia de Software e APIs REST.
-            </p>
-          </motion.div>
+              <p className="mt-3 text-zinc-600 dark:text-zinc-400">
+                {item.institution}
+              </p>
 
-          {/* Certificações */}
-          <motion.div
-            whileHover={{ y: -8 }}
-            className="bg-zinc-950 rounded-3xl border border-zinc-800 p-8"
-          >
-            <FaCertificate
-              className="text-yellow-500 mb-6"
-              size={50}
-            />
+              <span className="inline-block mt-4 px-4 py-2 rounded-full bg-blue-600 text-white text-sm">
+                {item.period}
+              </span>
 
-            <h3 className="text-2xl font-bold">
-              Tecnologias estudadas
-            </h3>
+            </motion.div>
 
-            <div className="mt-6 space-y-4 text-zinc-300">
-
-              <p>✔ Java</p>
-
-              <p>✔ Spring Boot</p>
-
-              <p>✔ React Native</p>
-
-              <p>✔ TypeScript</p>
-
-              <p>✔ Firebase</p>
-
-              <p>✔ MySQL</p>
-
-              <p>✔ Git & GitHub</p>
-
-              <p>✔ Figma</p>
-
-              <p>✔ APIs REST</p>
-
-              <p>✔ Postman & Swagger</p>
-
-            </div>
-
-          </motion.div>
+          ))}
 
         </div>
 

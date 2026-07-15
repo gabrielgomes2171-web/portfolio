@@ -10,7 +10,7 @@ import { Education } from "../components/Education";
 import { Services } from "../components/Services";
 import { Stats } from "../components/Stats";
 import { Highlights } from "../components/Highlights";
-
+import { GithubStats } from "../components/GithubStats";
 
 export function Home() {
   return (
@@ -19,9 +19,10 @@ export function Home() {
   <Hero />
   <About />
   <Skills />
+  <Education />
   <Projects />
   <Timeline />
-  <Education />
+  <GithubStats />
   <Stats />
   <Services />
   <Highlights />
