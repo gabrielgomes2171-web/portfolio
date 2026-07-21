@@ -1,39 +1,52 @@
 import { motion } from "framer-motion";
+import {
+  FaGraduationCap,
+  FaLaptopCode,
+  FaMoneyCheckAlt,
+  FaRocket,
+  FaBriefcase,
+} from "react-icons/fa";
 
 const timeline = [
   {
-    year: "2025",
+    year: "2024",
+    icon: <FaGraduationCap />,
     title: "Início da Graduação",
     description:
-      "Comecei o curso de Análise e Desenvolvimento de Sistemas, desenvolvendo a base em lógica de programação, algoritmos e banco de dados.",
+      "Ingresso no curso de Análise e Desenvolvimento de Sistemas.",
+    color: "bg-blue-500",
   },
-
+  {
+    year: "2025",
+    icon: <FaLaptopCode />,
+    title: "StockMoto",
+    description:
+      "Desenvolvimento do aplicativo para gerenciamento de estoque de motopeças.",
+    color: "bg-green-500",
+  },
+  {
+    year: "2025",
+    icon: <FaMoneyCheckAlt />,
+    title: "NexCraft",
+    description:
+      "Aplicativo voltado para educação financeira e investimentos.",
+    color: "bg-yellow-500",
+  },
   {
     year: "2026",
-    title: "Primeiros Projetos",
+    icon: <FaRocket />,
+    title: "Portfólio Profissional",
     description:
-      "Aprendi Java, JavaScript, SQL e iniciei projetos acadêmicos utilizando boas práticas de desenvolvimento.",
+      "Criação de um portfólio moderno utilizando React, TypeScript e Framer Motion.",
+    color: "bg-purple-500",
   },
-
   {
-    year: "2026",
-    title: "Desenvolvimento Mobile",
+    year: "Objetivo",
+    icon: <FaBriefcase />,
+    title: "Primeira Oportunidade",
     description:
-      "Passei a desenvolver aplicações com React Native, Firebase, TypeScript e Spring Boot.",
-  },
-
-  {
-    year: "2026",
-    title: "Projetos Próprios",
-    description:
-      "Desenvolvimento dos aplicativos StockMoto e NexCraft, criando interfaces modernas e APIs para aplicações reais.",
-  },
-
-  {
-    year: "Hoje",
-    title: "Buscando Estágio",
-    description:
-      "Em busca da primeira oportunidade como Desenvolvedor Full Stack para aplicar meus conhecimentos e continuar evoluindo.",
+      "Conquistar uma vaga como Desenvolvedor Full Stack.",
+    color: "bg-red-500",
   },
 ];
 
@@ -41,42 +54,89 @@ export function Timeline() {
   return (
     <section
       id="timeline"
-      className="max-w-6xl mx-auto px-6 py-28"
+      className="py-24 bg-white dark:bg-zinc-950 transition-all duration-500"
     >
-      <h2 className="text-5xl font-bold text-center mb-20">
-        Minha Jornada
-      </h2>
+      <div className="max-w-6xl mx-auto px-6">
 
-      <div className="relative border-l-2 border-blue-600 ml-5">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-5xl font-bold text-center"
+        >
+          Minha Jornada
+        </motion.h2>
 
-        {timeline.map((item, index) => (
+        <p className="text-center mt-4 text-zinc-600 dark:text-zinc-400">
+          Evolução acadêmica e profissional.
+        </p>
 
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: .6 }}
-            viewport={{ once: true }}
-            className="mb-14 ml-8"
-          >
+        <div className="relative mt-20">
 
-            <div className="absolute w-5 h-5 bg-blue-500 rounded-full -left-[11px]" />
+          {/* Linha */}
 
-            <span className="text-blue-400 font-bold">
-              {item.year}
-            </span>
+          <div className="absolute left-1/2 top-0 h-full w-1 bg-blue-500 -translate-x-1/2 hidden md:block" />
 
-            <h3 className="text-2xl font-bold mt-2">
-              {item.title}
-            </h3>
+          {timeline.map((item, index) => (
 
-            <p className="text-zinc-400 mt-3 leading-7">
-              {item.description}
-            </p>
+            <motion.div
+              key={item.title}
+              initial={{
+                opacity: 0,
+                x: index % 2 === 0 ? -100 : 100,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: .6,
+              }}
+              className={`mb-16 flex ${
+                index % 2 === 0
+                  ? "md:flex-row"
+                  : "md:flex-row-reverse"
+              } flex-col items-center`}
+            >
 
-          </motion.div>
+              <div className="md:w-1/2 px-6">
 
-        ))}
+                <div className="rounded-3xl shadow-xl bg-zinc-100 dark:bg-zinc-900 p-8 hover:scale-105 transition">
+
+                  <span className="text-blue-500 font-bold">
+                    {item.year}
+                  </span>
+
+                  <h3 className="text-2xl font-bold mt-2">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                    {item.description}
+                  </p>
+
+                </div>
+
+              </div>
+
+              {/* Ícone */}
+
+              <div
+                className={`w-16 h-16 rounded-full ${item.color}
+                text-white flex items-center justify-center text-2xl
+                border-4 border-white dark:border-zinc-950 shadow-xl z-10`}
+              >
+                {item.icon}
+              </div>
+
+              <div className="md:w-1/2" />
+
+            </motion.div>
+
+          ))}
+
+        </div>
 
       </div>
     </section>

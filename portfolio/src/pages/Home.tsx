@@ -8,9 +8,9 @@ import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import { Education } from "../components/Education";
 import { Services } from "../components/Services";
-import { Stats } from "../components/Stats";
 import { Highlights } from "../components/Highlights";
 import { GithubStats } from "../components/GithubStats";
+import { Experience } from "../components/Experience";
 
 export function Home() {
   return (
@@ -21,9 +21,9 @@ export function Home() {
   <Skills />
   <Education />
   <Projects />
+  <Experience />
   <Timeline />
   <GithubStats />
-  <Stats />
   <Services />
   <Highlights />
   <Contact />
