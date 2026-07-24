@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "../context/ThemeContext";
+import { motion } from "framer-motion";
+
+import {
+  FaGithub,
+  FaLinkedin,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
+
 
 const links = [
   {
@@ -21,121 +27,364 @@ const links = [
     href: "#projects",
   },
   {
+    name: "Experiência",
+    href: "#experience",
+  },
+  {
     name: "Contato",
     href: "#contact",
   },
 ];
 
-export function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  const { dark, toggleTheme } = useTheme();
+export function Navbar(){
 
-  useEffect(() => {
-    function handleScroll() {
-      setScrolled(window.scrollY > 30);
-    }
+  const [scrolled,setScrolled] = useState(false);
 
-    window.addEventListener("scroll", handleScroll);
+  const [active,setActive] = useState("#home");
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [open,setOpen] = useState(false);
+
+
+
+  useEffect(()=>{
+
+
+    const handleScroll = ()=>{
+
+      setScrolled(window.scrollY > 40);
+
+
+      links.forEach((link)=>{
+
+        const section = document.querySelector(
+          link.href
+        );
+
+
+        if(section){
+
+          const top =
+          section.getBoundingClientRect().top;
+
+
+          if(top <= 150){
+
+            setActive(link.href);
+
+          }
+
+        }
+
+      });
+
+    };
+
+
+    window.addEventListener(
+      "scroll",
+      handleScroll
+    );
+
+
+    return ()=>{
+
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+
+    };
+
+
+  },[]);
+
+
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-lg border-b border-zinc-200 dark:border-zinc-800"
-          : "bg-transparent"
-      }`}
+
+    <motion.nav
+
+      initial={{
+        y:-100,
+        opacity:0,
+      }}
+
+      animate={{
+        y:0,
+        opacity:1,
+      }}
+
+      transition={{
+        duration:.6,
+      }}
+
+
+      className={`
+        fixed
+        top-5
+        left-1/2
+        -translate-x-1/2
+        z-50
+
+        w-[90%]
+        max-w-6xl
+
+        rounded-2xl
+
+        border
+
+        transition-all
+        duration-500
+
+        ${
+          scrolled
+          ?
+          "bg-zinc-950/80 border-zinc-800 shadow-xl"
+          :
+          "bg-white/10 border-white/20"
+        }
+
+        backdrop-blur-xl
+
+      `}
+
     >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+
+      <div className="
+        flex
+        items-center
+        justify-between
+        px-6
+        py-4
+      ">
+
+
 
         {/* Logo */}
 
         <a
           href="#home"
-          className="text-3xl font-bold text-zinc-900 dark:text-white"
+          className="
+          text-2xl
+          font-bold
+          "
         >
+
+          <span className="text-blue-500">
+            G
+          </span>
           Gomes
-          <span className="text-blue-500">Dev</span>
+
         </a>
+
+
+
 
         {/* Desktop */}
 
-        <nav className="hidden md:flex items-center gap-8">
 
-          {links.map((link) => (
+        <div className="
+          hidden
+          md:flex
+          items-center
+          gap-8
+        ">
+
+
+          {links.map((link)=>(
+
+
             <a
-              key={link.name}
+
+              key={link.href}
+
               href={link.href}
-              className="font-medium text-zinc-700 dark:text-zinc-300 hover:text-blue-500 transition"
+
+              className="
+              relative
+              text-sm
+              text-zinc-300
+              hover:text-white
+              transition
+              "
+
             >
+
               {link.name}
+
+
+              {
+                active === link.href &&
+                (
+
+                  <motion.span
+
+                    layoutId="active"
+
+                    className="
+                    absolute
+                    left-0
+                    -bottom-2
+
+                    h-[2px]
+                    w-full
+
+                    bg-blue-500
+                    "
+
+                  />
+
+                )
+
+              }
+
+
             </a>
+
+
           ))}
 
-          <button
-            onClick={toggleTheme}
-            className="text-xl text-yellow-500 hover:scale-110 transition"
+
+
+          <a
+            href="https://github.com/gabrielgomes2171-web"
+            target="_blank"
+            className="
+            text-xl
+            hover:text-blue-500
+            transition
+            "
           >
-            {dark ? <FaSun /> : <FaMoon />}
-          </button>
+            <FaGithub/>
+          </a>
 
-        </nav>
 
-        {/* Mobile */}
 
-        <div className="md:hidden flex items-center gap-5">
-
-          <button
-            onClick={toggleTheme}
-            className="text-xl text-yellow-500"
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            className="
+            text-xl
+            hover:text-blue-500
+            transition
+            "
           >
-            {dark ? <FaSun /> : <FaMoon />}
-          </button>
+            <FaLinkedin/>
+          </a>
 
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-2xl text-zinc-900 dark:text-white"
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
 
         </div>
+
+
+
+
+        {/* Mobile Button */}
+
+
+        <button
+
+          onClick={()=>setOpen(!open)}
+
+          className="
+          md:hidden
+          text-2xl
+          "
+
+        >
+
+          {
+            open
+            ?
+            <FaTimes/>
+            :
+            <FaBars/>
+          }
+
+
+        </button>
+
+
+
       </div>
 
-      <AnimatePresence>
 
-        {menuOpen && (
 
-          <motion.div
-            initial={{ opacity: 0, y: -25 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -25 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800"
-          >
 
-            {links.map((link) => (
 
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="block py-4 px-6 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
-              >
-                {link.name}
-              </a>
+      {/* Mobile Menu */}
 
-            ))}
 
-          </motion.div>
+      {
 
-        )}
+      open && (
 
-      </AnimatePresence>
-    </header>
+        <motion.div
+
+          initial={{
+            opacity:0,
+            height:0,
+          }}
+
+          animate={{
+            opacity:1,
+            height:"auto",
+          }}
+
+          className="
+          md:hidden
+          px-6
+          pb-6
+          "
+
+        >
+
+
+          <div className="
+          flex
+          flex-col
+          gap-5
+          ">
+
+
+          {links.map((link)=>(
+
+            <a
+
+              key={link.href}
+
+              href={link.href}
+
+              onClick={()=>setOpen(false)}
+
+              className="
+              text-zinc-300
+              hover:text-blue-500
+              "
+
+            >
+
+              {link.name}
+
+            </a>
+
+          ))}
+
+
+          </div>
+
+
+        </motion.div>
+
+      )
+
+      }
+
+
+    </motion.nav>
+
+
   );
+
 }

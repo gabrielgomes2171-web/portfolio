@@ -9,146 +9,475 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
+
+const contacts = [
+
+  {
+    title: "Email",
+    value: "gabrielgomes2171@gmail.com",
+    icon: FaEnvelope,
+    link: "mailto:gabrielgomes2171@gmail.com",
+    color: "text-blue-500",
+    hover: "hover:border-blue-500",
+  },
+
+
+  {
+    title: "WhatsApp",
+    value: "(81) 98289-2353",
+    icon: FaWhatsapp,
+    link: "https://wa.me/5581982892353",
+    color: "text-green-500",
+    hover: "hover:border-green-500",
+  },
+
+
+  {
+    title: "GitHub",
+    value: "github.com/gabrielgomes2171-web",
+    icon: FaGithub,
+    link: "https://github.com/gabrielgomes2171-web",
+    color: "text-white",
+    hover: "hover:border-white",
+  },
+
+
+  {
+    title: "LinkedIn",
+    value: "Gabriel Gomes",
+    icon: FaLinkedin,
+    link: "https://www.linkedin.com/in/gabriel-gomes-da-silva-5a5182200/",
+    color: "text-blue-500",
+    hover: "hover:border-blue-500",
+  },
+
+];
+
+
+
 export function Contact() {
-  return (
-    <section
-      id="contact"
-      className="bg-zinc-950 py-24 px-6"
-    >
-      <Reveal>
-        <div className="max-w-5xl mx-auto">
 
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl font-bold text-center"
-          >
-            Contato
-          </motion.h2>
 
-          <p className="text-zinc-400 text-center mt-4 mb-16 max-w-2xl mx-auto">
-            Estou em busca da minha primeira oportunidade como Desenvolvedor.
-            Caso tenha interesse em conversar ou conhecer meus projetos,
-            entre em contato.
-          </p>
+return (
 
-          <div className="grid md:grid-cols-2 gap-8">
+<section
 
-            {/* Email */}
+id="contact"
 
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              href="mailto:gabrielgomes2171@gmail.com"
-              className="flex items-center gap-5 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-blue-500 transition"
-            >
-              <FaEnvelope className="text-4xl text-blue-500" />
+className="
+relative
+overflow-hidden
+py-24
+px-6
+"
 
-              <div>
-                <h3 className="font-bold text-xl">
-                  Email
-                </h3>
+>
 
-                <p className="text-zinc-400">
-                  em breve...
-                </p>
-              </div>
 
-            </motion.a>
+<Reveal>
 
-            {/* WhatsApp */}
+<div
+className="
+max-w-5xl
+mx-auto
+"
+>
 
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              href="https://wa.me/5581982892353"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-5 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-green-500 transition"
-            >
-              <FaWhatsapp className="text-4xl text-green-500" />
 
-              <div>
-                <h3 className="font-bold text-xl">
-                  WhatsApp
-                </h3>
 
-                <p className="text-zinc-400">
-                  (81) 98289-2353
-                </p>
-              </div>
+{/* TÍTULO */}
 
-            </motion.a>
 
-            {/* GitHub */}
+<motion.div
 
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              href="https://github.com/gabrielgomes2171-web"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-5 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-white transition"
-            >
-              <FaGithub className="text-4xl" />
+initial={{
+opacity:0,
+y:40
+}}
 
-              <div>
-                <h3 className="font-bold text-xl">
-                  GitHub
-                </h3>
+whileInView={{
+opacity:1,
+y:0
+}}
 
-                <p className="text-zinc-400">
-                  github.com/gabrielgomes2171-web
-                </p>
-              </div>
+viewport={{
+once:true
+}}
 
-            </motion.a>
+transition={{
+duration:.6
+}}
 
-            {/* LinkedIn */}
+className="
+text-center
+"
 
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              href="https://www.linkedin.com/in/gabriel-gomes-da-silva-5a5182200/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-5 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-blue-500 transition"
-            >
-              <FaLinkedin className="text-4xl text-blue-500" />
+>
 
-              <div>
-                <h3 className="font-bold text-xl">
-                  LinkedIn
-                </h3>
 
-                <p className="text-zinc-400">
-                  Gabriel Gomes
-                </p>
-              </div>
+<h2
 
-            </motion.a>
+className="
+text-5xl
+font-bold
+"
 
-          </div>
+>
 
-          {/* Localização */}
+Entre em{" "}
 
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="mt-10 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center justify-center gap-4"
-          >
-            <FaMapMarkerAlt className="text-red-500 text-3xl" />
+<span className="text-blue-500">
+Contato
+</span>
 
-            <div>
-              <h3 className="text-xl font-bold">
-                Localização
-              </h3>
+</h2>
 
-              <p className="text-zinc-400">
-                Caruaru • Pernambuco • Brasil
-              </p>
-            </div>
 
-          </motion.div>
 
-        </div>
-      </Reveal>
-    </section>
-  );
+<p
+
+className="
+mt-5
+mb-16
+text-zinc-400
+max-w-2xl
+mx-auto
+leading-8
+"
+
+>
+
+Estou em busca da minha primeira oportunidade como Desenvolvedor.
+Caso queira conhecer meus projetos ou conversar sobre tecnologia,
+fique à vontade para entrar em contato.
+
+</p>
+
+
+</motion.div>
+
+
+
+
+
+
+
+{/* CARDS */}
+
+
+<div
+
+className="
+grid
+md:grid-cols-2
+gap-8
+"
+
+>
+
+
+{contacts.map((item,index)=>{
+
+
+const Icon = item.icon;
+
+
+return (
+
+
+<motion.a
+
+
+key={item.title}
+
+
+href={item.link}
+
+target={
+item.title === "Email"
+?
+undefined
+:
+"_blank"
+}
+
+rel="noopener noreferrer"
+
+
+initial={{
+
+opacity:0,
+y:50
+
+}}
+
+
+whileInView={{
+
+opacity:1,
+y:0
+
+}}
+
+
+viewport={{
+
+once:true
+
+}}
+
+
+transition={{
+
+duration:.5,
+delay:index*.1
+
+}}
+
+
+
+whileHover={{
+
+scale:1.03,
+y:-8
+
+}}
+
+
+
+className={`
+group
+relative
+overflow-hidden
+flex
+items-center
+gap-5
+rounded-3xl
+bg-zinc-900/60
+backdrop-blur-xl
+border
+border-white/10
+p-6
+shadow-2xl
+transition
+${item.hover}
+`}
+
+>
+
+
+{/* brilho */}
+
+
+<div
+
+className="
+absolute
+-top-16
+-right-16
+w-40
+h-40
+bg-blue-500/20
+rounded-full
+blur-3xl
+opacity-0
+group-hover:opacity-100
+transition
+"
+
+/>
+
+
+
+
+
+<div
+
+className={`
+relative
+text-4xl
+${item.color}
+`}
+
+>
+
+<Icon />
+
+</div>
+
+
+
+
+
+<div className="relative">
+
+<h3
+
+className="
+text-xl
+font-bold
+"
+
+>
+
+{item.title}
+
+</h3>
+
+
+
+<p
+
+className="
+text-zinc-400
+mt-1
+"
+
+>
+
+{item.value}
+
+</p>
+
+
+</div>
+
+
+
+</motion.a>
+
+
+);
+
+
+})}
+
+
+
+</div>
+
+
+
+
+
+
+
+
+{/* LOCALIZAÇÃO */}
+
+
+
+<motion.div
+
+initial={{
+
+opacity:0,
+y:40
+
+}}
+
+
+whileInView={{
+
+opacity:1,
+y:0
+
+}}
+
+
+viewport={{
+
+once:true
+
+}}
+
+
+
+whileHover={{
+
+scale:1.02
+
+}}
+
+
+
+className="
+mt-10
+flex
+items-center
+justify-center
+gap-4
+rounded-3xl
+bg-zinc-900/60
+backdrop-blur-xl
+border
+border-white/10
+p-6
+shadow-2xl
+"
+
+>
+
+
+<FaMapMarkerAlt
+
+className="
+text-red-500
+text-3xl
+"
+
+/>
+
+
+<div>
+
+
+<h3
+
+className="
+text-xl
+font-bold
+"
+
+>
+
+Localização
+
+</h3>
+
+
+
+<p
+
+className="
+text-zinc-400
+"
+
+>
+
+Caruaru • Pernambuco • Brasil
+
+</p>
+
+
+</div>
+
+
+</motion.div>
+
+
+
+
+</div>
+
+
+</Reveal>
+
+
+</section>
+
+
+);
+
+
 }

@@ -9,7 +9,6 @@ import { Footer } from "../components/Footer";
 import { Education } from "../components/Education";
 import { Services } from "../components/Services";
 import { Highlights } from "../components/Highlights";
-import { GithubStats } from "../components/GithubStats";
 import { Experience } from "../components/Experience";
 
 export function Home() {
@@ -23,7 +22,6 @@ export function Home() {
   <Projects />
   <Experience />
   <Timeline />
-  <GithubStats />
   <Services />
   <Highlights />
   <Contact />
